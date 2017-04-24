@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+		spawn scp -o StrictHostKeyChecking=no  script.sh util@igtp5-pc[lindex $argv 0]:
+        set pass "2016_Pol"
+        expect {
+        password: {send "$pass\r"; exp_continue}
+                  }
+        spawn ssh -o StrictHostKeyChecking=no util@igtp5-pc[lindex $argv 0]
+        expect {
+        password: {send "$pass\r"; exp_continue}
+                  }
+        expect {
+        Welcome {send "sh script.sh\r"; exp_continue}
+                  }
+	expect{
+	sh script.sh {send "exit\r" ; exp_continue}
+		}                
