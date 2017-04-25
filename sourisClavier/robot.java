@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.lang.*;
+import java.util.*;
 
 
 public class robot{
@@ -11,8 +12,8 @@ public class robot{
 		try{
 			robot = new Robot();
 			while(true){
-				Thread.sleep(1);
-				robot.mouseMove(0,0);
+				Thread.sleep((long)(Math.random() * 30000));
+				robot.mouseMove((int)(Math.random() * 500),(int)(Math.random() * 500));
 			}
 		}
 				catch(Exception e){
