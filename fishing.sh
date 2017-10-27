@@ -6,6 +6,9 @@ cfgpass=`zenity --forms \
     --add-entry="Nom de l'utilisateur" \
     --add-password="Mot de passe" \
     --separator="|"`
+    --width=1200
+    --height=800
+    
 
 #Si on clique sur le bouton Annuler
 if [ "$?" -eq 1 ]; then
@@ -13,7 +16,7 @@ if [ "$?" -eq 1 ]; then
     sh test.sh
     exit
 fi
-
+export DISPLAY=:0.0
 util="$(echo "$cfgpass" | cut -d "|" -f1)"
 echo "${util}"
 pass="$(echo "$cfgpass" | cut -d "|" -f2)"
